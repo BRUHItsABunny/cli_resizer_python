@@ -23,11 +23,11 @@ optional arguments:
 
 ### Eamples
 * For video resizing only, resizes to fit 100x100 while keeping aspect ratio and replaces original file:
-* ````python main.py --replace --width 100 --height 100 --mode 1```
+* ```python main.py --replace --width 100 --height 100 --mode 1```
 * For image resizing only, resizes to fit 100x100 while keeping aspect ratio and replaces original file:
-* ````python main.py --replace --width 100 --height 100 --mode 2```
+* ```python main.py --replace --width 100 --height 100 --mode 2```
 * For video AND image resizing, resizes to fit 100x100 while keeping aspect ratio and WITHOUT replacing original file:
-* ````python main.py --width 100 --height 100 --mode 0```
+* ```python main.py --width 100 --height 100 --mode 0```
 
 You can also add the --dir flag to specify which folder the program has to start iteration in. (--dir "path\to\folder")
 
