@@ -36,5 +36,6 @@ You can also add the --dir flag to specify which folder the program has to start
 * Does not support parallel resizing to speed things up significantly (to be added in a better project)
 * Requires Python to be installed (to be addressed in a better project)
 * No UI/little UI feedback (to be added in better project)
+
 These limitations will probably be tackled in a Golang project of the same or similar purpose.
 Mostly because then it won't require an interpreter to be installed anymore and will just work with a single file you can execute.
