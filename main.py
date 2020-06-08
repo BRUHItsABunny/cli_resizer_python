@@ -35,20 +35,34 @@ def replace_file(path_new: str, path_old: str):
     pass
 
 
+def is_even(n: int):
+    return (n % 2) == 0
+
+
 def calculate_new_resolution(old_width: int, old_height: int):
     old_ratio = float(old_width) / float(old_height)
     new_width = float(args.height) * old_ratio
     new_height = float(args.width) / old_ratio
     if new_height <= args.height:
-        # found something
-        logging.info("New resolution will be %fx%f" % (args.width, new_height))
-        logging.debug("Old ratio = %f\nNew ratio = %f" % (old_ratio, float(args.width) / new_height))
-        return args.width, int(round(new_height))
+        if not is_even(int(round(new_height))):
+            logging.debug("New resolution %fx%f is not divisible by 2" % (args.width, new_height))
+            new_height -= 1
+            new_width = float(new_height) * old_ratio
+            logging.info("New resolution will be %fx%f" % (new_width, new_height))
+            return int(round(new_width)), int(round(new_height))
+        else:
+            logging.info("New resolution will be %dx%f" % (args.width, new_height))
+            return args.width, int(round(new_height))
     elif new_width <= args.width:
-        # found something
-        logging.info("New resolution will be %fx%f" % (new_width, args.height))
-        logging.debug("Old ratio = %f\nNew ratio = %f" % (old_ratio, new_width / float(args.height)))
-        return int(round(new_width)), args.height
+        if not is_even(int(round(new_width))):
+            logging.debug("New resolution %fx%f is not divisible by 2" % (new_width, args.height))
+            new_width -= 1
+            new_height = float(new_width) / old_ratio
+            logging.info("New resolution will be %fx%f" % (new_width, args.height))
+            return int(round(new_width)), int(round(new_height))
+        else:
+            logging.info("New resolution will be %fx%f" % (new_width, args.height))
+            return int(round(new_width)), args.height
 
 
 def main():
@@ -132,3 +146,5 @@ if __name__ == '__main__':
     4. resize video, delete original and then rename the new one to the original name
     """
     main()
+
+    
